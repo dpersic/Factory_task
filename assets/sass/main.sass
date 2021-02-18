@@ -1,0 +1,270 @@
+$laptop: 1440px //max
+$tablet: 1024px //max
+$mobile: 640px //max
+$arrow_max: 60px
+$hght_ft_hd: 100px
+$gap: 10px
+$title_font: 32px
+$content_font: 18px
+body 
+	width: 100%
+	margin: 0
+.container 
+	max-width: 1440px
+	margin-left: auto
+	margin-right: auto
+	position: relative
+	display: grid
+	grid-template-columns: repeat(12, 1fr)
+	grid-gap: $gap
+	grid-template-areas: "header" "middle" "footer"
+	@media(max-width: $laptop)
+		max-width: calc(100vw - 30px)
+		grid-column-gap: 10px
+	@media(max-width: $tablet)
+		max-width: calc(100vw - 30px)
+		grid-template-columns: repeat(8, 1fr)
+		grid-gap: $gap - 10px
+	@media(max-width: $mobile)
+		max-width: calc(100vh - 30px)
+		grid-template-columns: repeat(6, 1fr)
+.middle
+	grid-area: middle
+	grid-column: span 12
+	display: grid
+	grid-template-columns: repeat(12, 1fr)
+	grid-gap: $gap
+	grid-template-areas: "wrapper info"
+	position: relative
+	align-content: space-around
+	min-height: calc(100vh - 230px)
+	margin-left: 147px
+	@media(max-width: $laptop)
+		grid-column-gap: $gap - 5px
+	@media(max-width: $tablet)
+		grid-column: span 8
+		grid-template-columns: repeat(8, 1fr)
+		grid-gap: $gap - 5px
+		min-height: calc(100vh - 230px)
+	@media(max-width: $mobile)
+		grid-column: span 6
+		grid-template-columns: repeat(6, 1fr)
+		grid-gap: $gap - 5px
+		grid-template-areas: "wrapper" "info"		
+
+header
+	grid-area: header
+	grid-column: span 12
+	display: grid
+	grid-template-columns: repeat(12, 1fr)
+	grid-gap: $gap
+	grid-template-areas: "header_empty header_text"
+	height: $hght_ft_hd
+	@media(max-width: $laptop)
+		grid-column-gap: $gap - 5px
+	@media(max-width: $tablet)
+		grid-column: span 8
+		grid-template-columns: repeat(8, 1fr)
+		grid-gap: $gap - 5px
+	@media(max-width: $mobile)
+		grid-column: span 6
+		grid-template-columns: repeat(6, 1fr)
+		grid-gap: $gap - 5px
+	.header_empty
+		grid-area: header_empty
+		grid-column: span 3
+		@media(max-width: $tablet)
+			grid-column: span 2
+		@media(max-width: $mobile)
+			grid-column: span 2
+	.header_text
+		grid-area: header_text
+		grid-column: span 9
+		display: grid
+		grid-template-columns: repeat(8, 1fr)
+		@media(max-width: $tablet)
+			grid-column: span 6
+			grid-template-columns: repeat(6, 1fr)
+		@media(max-width: $mobile)
+			grid-column: span 4
+			grid-template-columns: repeat(4, 1fr)
+	.header_empty , .header_text
+		border-radius: 0 0 5px 5px
+footer
+	grid-area: footer
+	.footer
+		border-radius: 5px 5px 0 0
+		display: grid
+		grid-template-columns: repeat(12, 1fr)
+		grid-gap: $gap
+		@media(max-width: $laptop)
+			grid-column-gap: $gap - 5px
+		@media(max-width: $tablet)
+			grid-template-columns: repeat(8, 1fr)
+			grid-gap: $gap - 5px
+		@media(max-width: $mobile)
+			grid-template-columns: repeat(6, 1fr)
+			grid-gap: $gap - 5px
+header, footer 
+	grid-column: span 12
+	@media(max-width: $tablet)
+		grid-column: span 8
+	@media(max-width: $mobile)
+		grid-column: span 6
+.header_empty, .header_text, .footer
+	background-color: #DDDDDD
+	height: $hght_ft_hd
+.element
+	position: relative
+	color: #FFFFFF
+	font-family: "Helvetica Neue"
+	font-size: 15px
+	font-weight: bold
+	text-align: left
+	top: 50%
+	grid-column-start: 2
+	grid-column-end: 8
+	display: inline-table
+	@media(max-width: $tablet)
+		grid-column-start: 2
+		grid-column-end: 6
+		top: 40%
+	@media(max-width: $mobile)
+		grid-column-start: 1
+		grid-column-end: 4
+		font-size: 14px
+.wrapper
+	grid-area: wrapper
+	grid-column: span 9
+	display: grid
+	grid-template-columns: repeat(5, 1fr)
+	grid-gap: $gap
+	grid-template-areas: "slider_up slider_up slider_up" "slider_down . arrows"
+	@media(max-width: $laptop)
+		grid-column-gap: $gap - 5px
+	@media(max-width: $tablet)
+		grid-column: span 6
+		display: grid
+		grid-template-columns: repeat(6, 1fr)
+		grid-gap: $gap - 5px
+	@media(max-width: $mobile)
+		grid-column: span 6
+		display: grid
+		grid-template-columns: repeat(6, 1fr)
+		grid-gap: $gap - 5px
+		grid-template-areas: "slider_up slider_up" "slider_down slider_down"
+	.slider
+		display: inline-flex
+		direction: rtl
+		list-style: none
+		padding: 0
+		margin: 0
+	.slider_up
+		grid-area: slider_up
+		grid-column: span 8
+		grid-gap: 5px
+		@media(max-width: $tablet)
+			grid-column: span 6
+		@media(max-width: $mobile)
+			grid-column: span 6
+	.slider_down
+		grid-area: slider_down
+		grid-column: span 7
+		grid-gap: 5px
+		@media(max-width: $tablet)
+			grid-column: span 5
+		@media(max-width: $mobile)
+			grid-column: span 6
+.img
+	height: 200px
+	display: block
+	background-position: center
+	background-size: contain
+	background-repeat: no-repeat
+	margin: 2px
+	@media(max-width: $mobile)
+		height: 150px
+	img
+		height: 200px
+		border-radius: 5px
+		@media(max-width: $mobile)
+			height: 150px
+.info
+	grid-area: info
+	grid-column: span 3
+	font-family: 'Source Sans Pro', sans-serif
+	letter-spacing: -0.2px
+	width: 301px
+	margin-left: 5px
+	@media(max-width: $tablet)
+		grid-column: span 2
+	@media(max-width: $mobile)
+		grid-column: span 6
+	.title
+		font-size: $title_font
+		line-height: 40px
+		color: #134880
+		font-weight: bold
+		margin: 1px 0px 0px 0px
+		margin-left: 15px
+		width: 280px
+		@media(max-width: $tablet)
+			font-size: $title_font - 2px
+			line-height: 34px
+		@media(max-width: $mobile)
+			font-size: 36px
+	.content
+		color: #484A4C
+		font-size: $content_font
+		line-height: 26px
+		margin-top: 30px
+		margin-left: 15px
+		width: 268px
+		@media(max-width: $tablet)
+			line-height: 24px
+		@media(max-width: $mobile)
+			font-size: 24px
+.arrows
+	grid-area: arrows
+	grid-column: span 1
+	display: grid
+	margin-right: 11px
+	margin-left: 32px
+	@media(max-width: $mobile)
+		display: none
+	.arrow
+		max-height: $arrow_max
+		max-width: $arrow_max
+		border: 1px solid #134880
+		border-radius: 5px
+		background-position: center
+		background-size: auto
+		background-repeat: no-repeat
+		background-color: white
+		outline: none
+		padding: 5px 25px 1px 27px
+		margin-right: 22px
+		@media(max-width: $laptop)
+			width: 50px - 10px
+			height: 50px - 10px
+	.btn_left
+		background-image: url("../img/arrow-gray-left.png")
+	.btn_left:hover
+		background-image: url("../img/arrow-blue-left.png")
+	.btn_right
+		background-image: url("../img/arrow-gray-right.png")
+		margin-top: -30px
+	.btn_right:hover
+		background-image: url("../img/arrow-blue-right.png")
+		@media(max-width: $laptop)
+			margin-top: -65px
+		@media(max-width: $mobile)
+			margin-top: 0px
+	.btn_left, .btn_right
+		top: 0
+		right: 0
+		left: 40%
+		position: relative
+		@media(max-width: $laptop)
+			right: 0
+			left: calc(40% - 10px)
